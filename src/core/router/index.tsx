@@ -24,7 +24,7 @@ const Router = ({
         <Route exact path="/index.html" component={LoginPage} />
         <Route exact path="/firstrun" component={FirstRunPage} />
         <Route exact path="/error" component={ErrorPage} />
-        <AuthenticatedRoute exact path="/main" component={MainPage} />
+        <AuthenticatedRoute path="/main" component={MainPage} />
         <Route component={NoMatchPage} />
       </Switch>
     </ConnectedRouter>

@@ -24,7 +24,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 type State = layoutType;
 
-class SettingsTab extends React.Component<Props, State> {
+class SettingsPage extends React.Component<Props, State> {
   state = defaultLayout.settings;
 
   componentDidMount = () => {
@@ -113,4 +113,4 @@ const connector = connect(mapState, mapDispatch);
 
 type Props = ConnectedProps<typeof connector>;
 
-export default connector(SettingsTab);
+export default connector(SettingsPage);

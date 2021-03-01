@@ -76,7 +76,7 @@ const actions = {
   },
 };
 
-class ActionsTab extends React.Component<Props, State> {
+class ActionsPage extends React.Component<Props, State> {
   state = defaultLayout.actions;
 
   componentDidMount = () => {
@@ -146,4 +146,4 @@ const connector = connect(mapState, mapDispatch);
 
 type Props = ConnectedProps<typeof connector>;
 
-export default connector(ActionsTab);
+export default connector(ActionsPage);

@@ -6,7 +6,7 @@ import {
 import { RootState } from '../../../core/store';
 import Events from '../../../core/events';
 
-class LogsTab extends React.Component<Props> {
+class LogsPage extends React.Component<Props> {
   cache = new CellMeasurerCache({
     fixedWidth: true,
     minHeight: 15,
@@ -81,4 +81,4 @@ const connector = connect(mapState, mapDispatch);
 
 type Props = ConnectedProps<typeof connector>;
 
-export default connector(LogsTab);
+export default connector(LogsPage);

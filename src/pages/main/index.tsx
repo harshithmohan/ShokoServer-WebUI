@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import { Route } from 'react-router';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -8,11 +9,11 @@ import Events from '../../core/events';
 import Header from '../../components/Layout/Header';
 import Sidebar from '../../components/Layout/Sidebar';
 
-import DasboardTab from './Tabs/DashboardTab';
-import ImportFoldersTab from './Tabs/ImportFoldersTab';
-import ActionsTab from './Tabs/ActionsTab';
-import SettingsTab from './Tabs/SettingsTab';
-import LogsTab from './Tabs/LogsTab';
+import DashboardPage from './Pages/DashboardPage';
+import ImportFoldersPage from './Pages/ImportFoldersPage';
+import ActionsPage from './Pages/ActionsPage';
+import SettingsPage from './Pages/SettingsPage';
+import LogsPage from './Pages/LogsPage';
 
 import ImportFolderModal from '../../components/Dialogs/ImportFolderModal';
 import LanguagesModal from '../../components/Dialogs/LanguagesModal';
@@ -27,25 +28,6 @@ class MainPage extends React.Component<Props> {
     load();
     getQueueStatus();
   }
-
-  renderContent = () => {
-    const { activeTab } = this.props;
-
-    switch (activeTab) {
-      case 'dashboard':
-        return (<DasboardTab />);
-      case 'import-folders':
-        return (<ImportFoldersTab />);
-      case 'actions':
-        return (<ActionsTab />);
-      case 'settings':
-        return (<SettingsTab />);
-      case 'logs':
-        return (<LogsTab />);
-      default:
-        return (<DasboardTab />);
-    }
-  };
 
   render() {
     const { notifications, toastPosition } = this.props;
@@ -71,7 +53,11 @@ class MainPage extends React.Component<Props> {
           <div className="flex flex-col flex-grow h-full">
             <Header />
             <div className="overflow-y-auto flex-grow">
-              {this.renderContent()}
+              <Route exact path="/main/dashboard" component={DashboardPage} />
+              <Route exact path="/main/import-folders" component={ImportFoldersPage} />
+              <Route exact path="/main/actions" component={ActionsPage} />
+              <Route exact path="/main/logs" component={LogsPage} />
+              <Route exact path="/main/settings" component={SettingsPage} />
             </div>
           </div>
         </div>
@@ -81,7 +67,6 @@ class MainPage extends React.Component<Props> {
 }
 
 const mapState = (state: RootState) => ({
-  activeTab: state.mainpage.activeTab,
   toastPosition: state.webuiSettings.v3.toastPosition,
   notifications: state.webuiSettings.v3.notifications,
 });
